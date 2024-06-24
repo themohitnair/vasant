@@ -1,2 +1,2 @@
 # vasant
-A FastAPI X Svelte Weather App
+A FastAPI X Svelte City-wise Weather App
