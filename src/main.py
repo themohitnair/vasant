@@ -1,12 +1,20 @@
 from fastapi import FastAPI, HTTPException
 from src.weather import get_current_weather_conditions
-
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
 
 @app.get('/')
 async def greet():
     return {
-        "message": "Hello from vasant!"
+        "message": "vasant",
     }
 
 @app.get('/{city_name}')

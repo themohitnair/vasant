@@ -26,6 +26,7 @@ def get_current_weather_conditions(city: str) -> WeatherConditions:
     airps = weather.pressure['press'] if weather.uvi is not None else 0
 
     cond = WeatherConditions(
+        city=city,
         temp=temp,
         status=status,
         humidity=humidity,

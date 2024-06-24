@@ -6,8 +6,27 @@
     <title>vasant - Weather</title>
   </head>
   <body>
-    <div id="app">
+    <nav>
+      <div id="logo"></div>
+      <div class="links">
+        <li><a href="https://github.com/themohitnair/vasant/blob/main/README.md">About</a></li>
+        <li><a href="https://github.com/themohitnair/vasant">Source Code</a></li>
+      </div>      
+    </nav>
 
+    <div id="app">
+      <div class="form">
+        <input type="text" id="place" placeholder="Enter the name of a place">
+        <button id="submit">Check Weather</button>
+        <button id="clear">Clear</button>
+      </div>
+
+      <div class="info">
+        <h1 id="cityhead">Weather Conditions</h1>
+        <div id="weather">
+
+        </div>
+      </div>
     </div>
     <script type="module" src="/main.js"></script>
   </body>

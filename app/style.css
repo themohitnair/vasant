@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Sarpanch:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+body {
+  background-color: #1e1e2e;
+  font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+nav {
+  border-radius: 14px;
+  padding: 15px 30px;
+  margin: auto;
+  margin-top: 7px;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: black;  
+  list-style-type: none;
+}
+
+a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+a:hover {
+  color: lightblue;
+}
+
+a:active {
+  color: darkblue;
+}
+
+nav > li {
+  display: flex;
+  align-items: center;
+}
+
+#logo {
+  font-family: 'Sarpanch';
+  font-weight: bold;
+  color: #39ff14;
+  font-size: 25px;
+}
+
+.links {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#app {
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
+  margin-top: 60px;
+  align-items: start;
+  display: flex;
+}
+
+h1 {
+  font-weight: 400;
+  text-align: center;
+}
+
+#place {
+  background-color: black;
+  border: none;
+  border-bottom: 3px solid #0d6efd;
+  color: #39ff14;
+  width: 100%;
+  font-size: 20px;
+}
+
+#place:focus {
+  outline: none;
+}
+
+.form, .info {
+  padding: 15px 20px;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+#submit {
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  height: 30px;
+  width: 100%;
+}
+
+#submit:hover {
+  background-color: blue;
+}
+
+#submit:active {
+  background-color: navy;
+}
+
+#clear {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 3px;
+  border: none;
+  height: 30px;
+  width: 100%;
+}
+
+#clear:hover {
+  background-color: green;
+}
+
+#clear:active {
+  background-color: darkgreen;
+}
+
+.form {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.info {
+  width: 55%;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.weattr {  
+  display: flex;
+  justify-content: space-between;
+}
+
+#cityhead {
+  color: #39ff14;
+}
+
+ul > li {
+  padding: 10px;
+  background-color: #0d6efd;
+  border-radius: 5px;
+}
+
+ul > li:hover {
+  background-color: darkblue;
+  transition: 0.25s;
+}
+
+#weather {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
