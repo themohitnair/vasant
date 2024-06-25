@@ -94,7 +94,7 @@ h1 {
 }
 
 #submit {
-  background-color: #0d6efd;
+  background-color: #6495ED;
   color: white;
   border-radius: 3px;
   border: none;
@@ -103,11 +103,13 @@ h1 {
 }
 
 #submit:hover {
-  background-color: blue;
+  background-color: #0d6efd;
+  transition: 0.25s;
 }
 
 #submit:active {
   background-color: navy;
+  transition: 0.25s;
 }
 
 #clear {
@@ -121,10 +123,12 @@ h1 {
 
 #clear:hover {
   background-color: green;
+  transition: 0.25s;
 }
 
 #clear:active {
   background-color: darkgreen;
+  transition: 0.25s;
 }
 
 .form {
@@ -156,12 +160,12 @@ ul {
 
 ul > li {
   padding: 10px;
-  background-color: #0d6efd;
+  background-color: darkblue;
   border-radius: 5px;
 }
 
 ul > li:hover {
-  background-color: darkblue;
+  background-color: #0d6efd;
   transition: 0.25s;
 }
 
@@ -170,4 +174,9 @@ ul > li:hover {
   flex-direction: column;
   gap: 10px;
   padding: 20px;
+}
+
+.value {
+  color: skyblue;
+  font-weight: 900;
 }
