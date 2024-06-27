@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Sarpanch';
+  src: url('/fonts/sarpanch-v13-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('/fonts/roboto-condensed-v27-latin-regular.woff2') format('woff2');
+}
+
+.icons {
+   width: 24px;
+   height: 24px;
+}

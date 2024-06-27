@@ -9,7 +9,7 @@ load_dotenv()
 weather_api_key = os.getenv('API_KEY')
 
 
-def get_current_weather_conditions(city: str) -> WeatherConditions:
+async def get_current_weather_conditions(city: str) -> WeatherConditions:
     owm = OWM(weather_api_key)
     mgr = owm.weather_manager()
     observation = mgr.weather_at_place(city)

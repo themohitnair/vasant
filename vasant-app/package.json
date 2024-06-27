@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "vasant-app",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +12,10 @@
     "vite": "^5.3.1"
   },
   "dependencies": {
-    "jquery": "^3.7.1"
+    "autoprefixer": "^10.4.19",
+    "jquery": "^3.7.1",
+    "jquery-ui": "^1.13.3",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.4"
   }
 }
