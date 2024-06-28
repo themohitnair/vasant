@@ -34,17 +34,29 @@ async function getWeatherInfo(place) {
     return null;
   }
   try {
-    const response = await fetch(`http://localhost:8000/${place}`)  
+    console.log(`Fetching weather for: ${place}`);
+    const response = await fetch(`http://localhost:8000/api/${place}`);
+    console.log(`Response status: ${response.status}`);
+    
     if (!response.ok) {
-      throw new Error(`Unable to fetch info. Response status: ${response.status}`)
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-    const info = await response.json()
-    return info
+    
+    const responseText = await response.text();
+    console.log('Raw response:', responseText);
+    
+    try {
+      const info = JSON.parse(responseText);
+      console.log('Parsed weather data:', info);
+      return info;
+    } catch (parseError) {
+      console.error('Error parsing JSON:', parseError);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+    return null;
   }
-  catch (error) {
-    console.error('Server Error.')
-    return null
-  }    
 }
 
 const keysToDisp = {
@@ -84,12 +96,17 @@ const unitsSuffix = {
 function showWeatherInfo(info) {
   const weatherinfo = $('#weatherinfo')
   if (!info) {
+    console.log('Info is falsy, showing loading...');
     weatherinfo.text('Loading...').hide().fadeIn(500)
+    return;
   }
   if (info == null) {
+    console.log('Info is null, showing place not found...');
     weatherinfo.text('Place not found').hide().fadeIn(500)
     return;
   }
+
+  console.log('Generating weather info HTML...');
 
   let winfo = ''
 
@@ -117,7 +134,9 @@ $(() => {
 
   sub.on('click', async() => {
     const place = $('#place').val()
+    console.log(`Searching for: ${place}`);
     const info = await getWeatherInfo(place)
+    console.log('Info received:', info);
     showWeatherInfo(info)
   })
 

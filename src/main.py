@@ -2,33 +2,41 @@ from fastapi import FastAPI, HTTPException
 from src.weather import get_current_weather_conditions
 from cachetools import TTLCache
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse, JSONResponse
+import os
+import traceback
+
 app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"], 
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"], 
+    allow_methods=["*"],
     allow_headers=["*"],
 )
 
-cache = TTLCache(maxsize=100, ttl=1200)
-
-@app.get('/')
-async def greet():
-    return {
-        "message": "vasant",
-    }
-
-@app.get('/{city_name}')
+@app.get('/api/{city_name}')
 async def get_weather(city_name: str):
     try:
         if city_name in cache:
             return cache[city_name]
-
         weather_data = await get_current_weather_conditions(city=city_name)
-
         cache[city_name] = weather_data
         return weather_data
-    except:
-        raise HTTPException(status_code=500, detail='Internal Server Error. Unable to fetch information')
+    except Exception as e:
+        print(f"Error fetching weather for {city_name}: {str(e)}")
+        print(traceback.format_exc())
+        raise HTTPException(status_code=500, detail=f'Internal Server Error. Unable to fetch information: {str(e)}')
+
+app.mount("/assets", StaticFiles(directory="vasant-app/dist/assets", html=True), name="assets")
+
+cache = TTLCache(maxsize=100, ttl=1200)
+
+@app.get("/{full_path:path}")
+async def catch_all(full_path: str):
+    file_path = f"vasant-app/dist/{full_path}"
+    if os.path.isfile(file_path):
+        return FileResponse(file_path)
+    return FileResponse('vasant-app/dist/index.html')
