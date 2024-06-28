@@ -14,7 +14,7 @@ export default {
       fontFamily: {
         'roboto': ['Roboto'],
         'srpnch': ['Sarpanch']
-      }
+      },
     },
   },
   plugins: [],

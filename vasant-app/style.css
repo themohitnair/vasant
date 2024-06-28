@@ -12,7 +12,6 @@
   src: url('/fonts/roboto-condensed-v27-latin-regular.woff2') format('woff2');
 }
 
-.icons {
-   width: 24px;
-   height: 24px;
+.glow {
+  text-shadow: 0 0 5px currentColor, 0 0 15px currentColor, 0 0 30px currentColor;
 }

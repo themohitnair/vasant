@@ -25,7 +25,7 @@ function getApp() {
       </button>
     </div>
   </div>
-  <div id="weatherinfo" class="bg-inherit m-auto my-20 w-1/2 font-roboto text-xl text-white flex flex-col gap-3"></div>
+  <div id="weatherinfo" class="bg-inherit m-auto my-20 w-1/3 font-roboto text-xl text-white flex flex-col gap-3"></div>
   `
 }
 
@@ -105,24 +105,27 @@ function showWeatherInfo(info) {
   weatherinfo.html(winfo).hide().fadeIn(1000);
 }
 
-const nav = document.querySelector('#nav')
-const app = document.querySelector('#app')
-nav.innerHTML = getNavbar()
-app.innerHTML = getApp()
+$(() => {
+  const nav = $('#nav')
+  const app = $('#app')
+  nav.html(getNavbar())
+  app.html(getApp())
 
-const sub = document.querySelector('#submit')
+  $('.form-container').hide().css({ top: '-50px', position: 'relative' }).fadeIn(1000).animate({ top: '0px' }, 500)
 
-sub.addEventListener('click', async() => {
-  const place = document.querySelector('#place').value
-  const info = await getWeatherInfo(place)
-  showWeatherInfo(info)  
-})
+  const sub = $('#submit')
 
+  sub.on('click', async() => {
+    const place = $('#place').val()
+    const info = await getWeatherInfo(place)
+    showWeatherInfo(info)
+  })
 
-place.addEventListener('input', () => {
-  const weatherinfo = document.querySelector('#weatherinfo')
-  const place = document.querySelector('#place')
-  if (place.value.trim() == '') {
-    weatherinfo.textContent = ''    
-  }
+  $('#place').on('input', () => {
+    const weatherinfo = $('#weatherinfo')
+    const place = $('#place')
+    if (place.val().trim() == '') {
+      weatherinfo.text('')    
+    }
+  })
 })
