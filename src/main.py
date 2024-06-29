@@ -19,6 +19,7 @@ app.add_middleware(
 
 @app.get('/api/{city_name}')
 async def get_weather(city_name: str):
+    city_name = city_name.title()
     try:
         if city_name in cache:
             return cache[city_name]

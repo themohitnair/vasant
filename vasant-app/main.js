@@ -87,8 +87,8 @@ const unitsSuffix = {
   'temp': '°C',
   'humidity': '%',
   'wndspd': 'm/s',
-  'risetime': 'IST',
-  'settime': 'IST',
+  'risetime': 'GMT',
+  'settime': 'GMT',
   'cldcover': '%'
 }
 
