@@ -25,10 +25,9 @@ Vasant is a web application that provides real-time weather information for a gi
 --------------
 
 1. Clone the repository: `git clone https://github.com/themohitnair/vasant.git`
-2. Install the dependencies: `pip install -r requirements.txt`
-3. Set up the environment variables: `API_KEY=<your_openweathermap_api_key>`
-4. Run the application: `uvicorn main:app --host 0.0.0.0 --port 8000`
-5. Open the application in a web browser: `http://localhost:8000`
+2. Make sure you have a docker installation (latest)
+3. Use docker to build the container: `sudo docker build -t vasant .`
+4. Now run the container with the command: `sudo docker run -p 8000:8000 vasant`
 
 **Directory Structure**
 -----------------------
