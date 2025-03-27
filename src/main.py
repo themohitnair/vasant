@@ -1,18 +1,14 @@
 from fastapi import FastAPI, HTTPException
-from src.weather import get_current_weather_conditions
+from weather import get_current_weather_conditions
 from cachetools import TTLCache
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse, JSONResponse
+from fastapi.responses import FileResponse
 import os
 import traceback
 
 app = FastAPI()
 
-origins = [
-    "http://localhost:8000",
-    "http://localhost"
-]
+origins = ["http://localhost:5000"]
 
 app.add_middleware(
     CORSMiddleware,
@@ -22,7 +18,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get('/api/{city_name}')
+
+@app.get("/api/{city_name}")
 async def get_weather(city_name: str):
     city_name = city_name.title()
     try:
@@ -34,15 +31,24 @@ async def get_weather(city_name: str):
     except Exception as e:
         print(f"Error fetching weather for {city_name}: {str(e)}")
         print(traceback.format_exc())
-        raise HTTPException(status_code=500, detail=f'Internal Server Error. Unable to fetch information: {str(e)}')
+        raise HTTPException(
+            status_code=500,
+            detail=f"Internal Server Error. Unable to fetch information: {str(e)}",
+        )
 
-app.mount("/assets", StaticFiles(directory="vasant-app/dist/assets", html=True), name="assets")
 
 cache = TTLCache(maxsize=100, ttl=1200)
+
 
 @app.get("/{full_path:path}")
 async def catch_all(full_path: str):
     file_path = f"vasant-app/dist/{full_path}"
     if os.path.isfile(file_path):
         return FileResponse(file_path)
-    return FileResponse('vasant-app/dist/index.html')
+    return FileResponse("vasant-app/dist/index.html")
+
+
+if __name__ == "__main__":
+    import uvicorn
+
+    uvicorn.run(app="main:app", port=8000, host="localhost", reload=True)
