@@ -38,8 +38,6 @@ async def get_current_weather_conditions(city: str) -> WeatherConditions:
             else "NA"
         )
         cldcov = weather.clouds if weather.clouds is not None else 0
-        uvi = weather.uvi if weather.uvi is not None else 0.0
-        airps = weather.pressure["press"] if weather.uvi is not None else 0
 
         cond = WeatherConditions(
             city=city,
