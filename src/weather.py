@@ -52,7 +52,10 @@ async def get_current_weather_conditions(city: str) -> WeatherConditions:
 
         return cond
     except Exception as e:
+        print(
+            f"Error fetching weather conditions for {city}: {str(e)}"
+        )  # New error message
         raise HTTPException(
             status_code=500,
-            detail=f"Internal Server Error. Unable to fetch information: {str(e)}",
+            detail=f"Weather fetch failed for {city}. Please try again later.",
         )
